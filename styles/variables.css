@@ -1,1 +1,33 @@
 /* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
+
+:root {
+  --main-font: "Inter";
+  --accent-font: "PressStart2P";
+  --card-text-weight-font: 400;
+  --heading-weight-font: 700;
+  --main-size-font: 18px;
+  --accent-size-font: 14px;
+  --color-text: #000000;
+  --white: #fff;
+  --black: #000;
+  --text-stroke: rgb(255, 255, 255, 0.5);
+  --text-shadow: rgb(0, 0, 0, 0.25);
+  --background-backdrop: rgb(0, 0, 0, 0.75);
+  --background-image: repeating-linear-gradient(
+      90deg,
+      rgb(211, 211, 211),
+      rgb(211, 211, 211, 0) 2px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgb(211, 211, 211),
+      rgb(211, 211, 211, 0) 2px
+    ),
+    linear-gradient(0deg, rgb(231, 231, 231) 0.01%, rgb(26, 26, 26) 100%);
+  --sparks: red;
+  --contour: #000;
+  --core: #fff;
+  --main-body: red;
+  --fill-hover: #000;
+  --fill-active: red;
+}
