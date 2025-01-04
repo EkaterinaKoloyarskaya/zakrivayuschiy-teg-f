@@ -26,7 +26,7 @@
 }
 
 .header {
-  font-family: var(--accent-font, "PressStart2P"), "PressStart2P", serif;
+  font-family: var(--accent-font, "PressStart2P"), "PressStart2P", fantasy;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,7 +37,6 @@
   padding-block-end: clamp(7.5rem, 7.3239rem + 0.7512vw, 8rem);
   width: clamp(23.4375rem, 16.2852rem + 30.5164vw, 43.75rem);
   background-color: var(--white, #fff);
-  min-block-size: 364px;
   margin-block-start: 100px;
   border: 2px solid var(--black, #000);
   margin-block-end: 100px;
@@ -61,16 +60,16 @@
   font-family: var(--main-font, "Inter"), "Inter", serif;
   margin: 0 auto;
   width: clamp(375px, 50%, 700px);
-  background-color: var(--white, #fff);
   margin-block-end: 50px;
 }
 
 .card {
   border: 2px solid var(--black, #000);
+  background-color: var(--white, #fff);
 }
 
 .card-subtitle {
-  font-weight: var(--heading-weight-font, 700);
+  font-variation-settings: "wght" var(--heading-weight-font, 700);
   border-block-end: 2px solid var(--black, #000);
   padding-inline-start: 10px;
   min-block-size: 33px;
@@ -89,31 +88,31 @@
   border-block-end: 2px solid var(--black, #000);
 }
 
-.image-one-sprint {
+.sepia-filter-image {
   filter: sepia(80%);
 }
 
-.image-one-one-sprint {
+.blur-filter-image {
   filter: blur(8px);
 }
 
-.image-two-sprint {
+.opacity-filter-image {
   filter: opacity(0.6);
 }
 
-.image-two-two-sprint {
+.grayscale-filter-image {
   filter: grayscale(0.8);
 }
 
-.image-three-sprint {
+.saturate-filter-image {
   filter: saturate(190%);
 }
 
-.image-three-three-sprint {
+.hue-rotate-filter-image {
   filter: hue-rotate(-300deg);
 }
 
-.image-here-sprint {
+.hue-rotate-saturate-filter-image {
   filter: hue-rotate(200deg) saturate(300%);
 }
 
@@ -121,11 +120,11 @@
   position: absolute;
   inset-block-start: 25px;
   inset-inline-end: 25px;
-  font-family: var(--accent-font, "PressStart2P"), "PressStart2P", serif;
+  font-family: var(--accent-font, "PressStart2P"), "PressStart2P", fantasy;
   font-size: var(--accent-size-font, 14px);
   line-height: 1rem;
   text-transform: uppercase;
-  -webkit-text-stroke: 1px var(--text-strock, rgb(255, 255, 255, 0.5));
+  text-shadow: 1px var(--text-stroke), rgb(255, 255, 255, 0.5);
 }
 
 .label-watermark-small {
@@ -135,18 +134,19 @@
 .card-text {
   display: flex;
   flex-direction: column;
-
+  font-variation-settings: "wght" var(--card-text-weight-font, 400);
   gap: 27px;
   line-height: 1.3rem;
-  text-shadow: 0px 4px 4px var(--text-shadow, rgb(0, 0, 0, 0.25));
   margin: 22px 24px 25px 26px;
   font-size: var(--main-size-font, 18px);
 }
 
 .heart-like-container {
   display: flex;
+  gap: 5px;
   margin-inline-end: 25px;
   justify-content: end;
+  align-items: center;
   margin-block-end: 25px;
 }
 
@@ -159,7 +159,7 @@
 
 .button {
   position: relative;
-  font-family: var(--accent-font, "PressStart2P"), "PressStart2P", serif;
+  font-family: var(--accent-font, "PressStart2P"), "PressStart2P", fantasy;
   font-size: var(--accent-size-font, 14px);
   background-color: var(--white, #fff);
   color: var(--white, #fff);
@@ -173,6 +173,7 @@
 .like-save-container {
   display: flex;
   justify-content: center;
+  margin-block-end: 103px;
 }
 
 .button-save {
@@ -201,16 +202,16 @@
 
 .core {
   fill: transparent;
-  transition: fill 0.3s ease-in-out 0s;
+  transition: fill 0.3s linear 0s;
 }
 
 .contour {
-  transition: fill 0.3s ease-in-out 0.06s;
+  transition: fill 0.3s linear 0.06s;
 }
 
 .main-body {
   fill: transparent;
-  transition: fill 0.3s ease-in-out 0.05s;
+  transition: fill 0.3s linear 0.05s;
 }
 
 .card__icon-button:hover .core {
@@ -231,10 +232,12 @@
 
 .card__icon-button:active .core {
   fill: var(--fill-active, red);
+  transition: fill 0.3s linear 0s;
 }
 
 .card__icon-button:active .main-body {
   fill: var(--fill-active, red);
+  transition: fill 0.3s linear 0.05s;
 }
 
 .card__icon-button:active .contour {
@@ -263,29 +266,6 @@
 
 .like-icon.is-liked .sparks {
   animation: sparks 0.3s ease-in 0.3s;
-}
-
-@keyframes scale-heart {
-  from {
-    scale: 1;
-    fill: var(--fill-active, red);
-  }
-  to {
-    scale: 1.25;
-    fill: var(--fill-active, red);
-  }
-}
-
-@keyframes sparks {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
 }
 
 .card__like-button::before,
@@ -320,20 +300,22 @@
   mix-blend-mode: difference;
 }
 
+.card__icon-button {
+  transition: border 0.3s ease;
+}
+
 .card__icon-button:focus {
   outline: none;
 }
 
 .card__icon-button:focus-visible {
   border: 2px solid var(--black, #000);
-  padding-top: 4.5px;
-  transition: border 0.3s ease;
+  padding-left: 2px;
 }
 
 .dialog {
   display: flex;
   flex-direction: column;
-  block-size: 191px;
   inline-size: 353px;
   align-items: center;
   justify-content: center;
@@ -348,11 +330,10 @@
 }
 
 .dialog-container-floppy-text {
-  font-family: var(--accent-font, "PressStart2P"), "PressStart2P", serif;
+  font-family: var(--accent-font, "PressStart2P"), "PressStart2P", fantasy;
   display: flex;
 
   gap: 20px;
-  block-size: 63px;
   inline-size: 293px;
   align-items: center;
 }
@@ -366,24 +347,19 @@
   font-size: var(--accent-size-font, 14px);
   line-height: 150%;
   text-transform: uppercase;
-  block-size: 63px;
   inline-size: 234px;
 }
 
 .close-button {
   block-size: 38px;
   inline-size: 293px;
-  font-size: var(--accent-size-font, 14px);
   color: var(--black, #000);
+  text-transform: uppercase;
 }
 
 @media (width <= 375px) {
-  .header-mobile {
-    min-block-size: 327px;
-  }
-
   .card-subtitle {
-    padding: 3.5px 10px 3.5px 10px;
+    padding: 3.5px 10px 5.5px 10px;
   }
 
   .heart-like-container {
@@ -392,21 +368,22 @@
 
   .label-watermark {
     inset-block-start: 25px;
-    inset-inline-end: 13px;
+    inset-inline-end: 11px;
   }
 
   .like-save-container {
-    margin-block-start: 5px;
+    margin-block-start: 3px;
+    margin-block-end: 100px;
+  }
+
+  .card-text {
+    inline-size: 321px;
   }
 
   .button-save {
     flex-direction: column;
     block-size: 81px;
     inline-size: 306px;
-  }
-
-  .like-save-container {
-    margin-block-end: 100px;
   }
 
   .floppy-save {
@@ -442,6 +419,6 @@
 ) {
   .label-watermark {
     -webkit-text-stroke: 1px var(--text-stroke, rgb(255, 255, 255, 0.5));
-    text-shadow: 1px var(--text-stroke, rgb(255, 255, 255, 0.5));
+    text-shadow: 1px var(--text-stroke), rgb(255, 255, 255, 0.5);
   }
 }
