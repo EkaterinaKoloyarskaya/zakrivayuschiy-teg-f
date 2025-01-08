@@ -71,8 +71,7 @@
 .card-subtitle {
   font-variation-settings: "wght" var(--heading-weight-font, 700);
   border-block-end: 2px solid var(--black, #000);
-  padding-inline-start: 10px;
-  min-block-size: 33px;
+  padding: 5px 24px 4px 10px;
   align-content: center;
   font-size: var(--main-size-font, 18px);
 }
@@ -143,18 +142,25 @@
 
 .heart-like-container {
   display: flex;
+  flex-direction: row;
   gap: 5px;
   margin-inline-end: 25px;
   justify-content: end;
-  align-items: center;
+  align-content: center;
   margin-block-end: 25px;
 }
 
 .card__icon-button {
   display: flex;
+  align-items: center;
   background-color: transparent;
   border: none;
   cursor: pointer;
+  padding: 0px;
+}
+
+.card__icon-button .like-icon {
+  justify-self: center;
 }
 
 .button {
@@ -170,10 +176,14 @@
   overflow: hidden;
 }
 
+.like-icon {
+  display: flex;
+  align-content: flex-start;
+}
+
 .like-save-container {
   display: flex;
   justify-content: center;
-  margin-block-end: 103px;
 }
 
 .button-save {
@@ -189,9 +199,9 @@
   background: var(--background-backdrop, rgb(0, 0, 0, 0.75));
 }
 
-.card__like-button:focus,
-.button-save:focus {
+.button-animation:focus {
   outline: none;
+
   box-shadow: 2px 2px 0 var(--black, #000);
   transition: box-shadow 0.3s ease;
 }
@@ -268,8 +278,7 @@
   animation: sparks 0.3s ease-in 0.3s;
 }
 
-.card__like-button::before,
-.button-save::before {
+.button-animation::before {
   content: "";
   position: absolute;
   top: 0;
@@ -282,8 +291,7 @@
   z-index: 0;
 }
 
-.card__like-button:hover:before,
-.button-save:hover::before {
+.button-animation:hover:before {
   transform: translateX(0);
 }
 
@@ -304,13 +312,11 @@
   transition: border 0.3s ease;
 }
 
-.card__icon-button:focus {
-  outline: none;
-}
-
 .card__icon-button:focus-visible {
   border: 2px solid var(--black, #000);
-  padding-left: 2px;
+  outline: none;
+  height: 38px;
+  padding: 0;
 }
 
 .dialog {
@@ -320,6 +326,8 @@
   align-items: center;
   justify-content: center;
   gap: 30px;
+  padding-block-start: 30px;
+  padding-block-end: 30px;
   margin-top: clamp(14.875rem, 11.651rem + 13.7559vw, 24.03125rem);
   margin-bottom: clamp(14.875rem, 11.651rem + 13.7559vw, 24.03125rem);
 }
@@ -332,7 +340,6 @@
 .dialog-container-floppy-text {
   font-family: var(--accent-font, "PressStart2P"), "PressStart2P", fantasy;
   display: flex;
-
   gap: 20px;
   inline-size: 293px;
   align-items: center;
@@ -373,7 +380,6 @@
 
   .like-save-container {
     margin-block-start: 3px;
-    margin-block-end: 100px;
   }
 
   .card-text {
@@ -419,6 +425,6 @@
 ) {
   .label-watermark {
     -webkit-text-stroke: 1px var(--text-stroke, rgb(255, 255, 255, 0.5));
-    text-shadow: 1px var(--text-stroke), rgb(255, 255, 255, 0.5);
+    text-shadow: none;
   }
 }
